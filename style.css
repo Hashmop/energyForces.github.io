@@ -1,0 +1,280 @@
+/* Reset basic elements */
+body, h1, h2, h3, p, ul, table, tr, th, td, form, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and text styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 60px; /* Space for fixed navbar */
+}
+
+/* Navigation bar styles */
+.navbar {
+    background-color: #ffffff; /* Changed navbar color to white */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 100px; /* Adjust this value to fit your navbar height */
+    width: 100px;
+    margin-right: 10px; /* Optional: adds some space between the logo and any text */
+}
+
+.navbar-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333; /* Updated to a darker color for contrast */
+    background: none;
+    border: none;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* No list styles needed for div-based navigation */
+.navbar-link {
+    position: relative;
+}
+
+.navbar-link > a {
+    color: #333; /* Updated to a darker color for contrast */
+    text-decoration: none;
+    padding: 14px 20px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-link > a:hover {
+    background-color: #f0f0f0; /* Slightly darker shade on hover */
+    color: #80CC28; /* Logo green color */
+}
+
+/* Dropdown styling */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #ffffff; /* Match navbar color */
+    min-width: 160px;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown > div {
+    padding: 10px 20px;
+}
+
+.dropdown > div > a {
+    color: #333; /* Updated to a darker color for contrast */
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown > div > a:hover {
+    background-color: #f0f0f0; /* Slightly darker shade on hover */
+    color: #80CC28; /* Logo green color */
+}
+
+.navbar-link:hover .dropdown {
+    display: block;
+}
+
+/* Styles for the active dropdown in mobile view */
+.dropdown.active {
+    display: block;
+    position: static;
+    box-shadow: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        max-height: 500px; /* Arbitrary large value to allow full display */
+    }
+
+    .navbar-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-link > a {
+        padding: 10px 20px;
+    }
+
+    .dropdown {
+        display: none;
+        position: static;
+    }
+
+    .dropdown > div > a {
+        padding-left: 30px;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+}
+
+/* Hero section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: url('hero-image.jpg') no-repeat center center/cover;
+    color: black;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.5em;
+}
+
+/* Sections */
+.info-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.info-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Testimonials */
+.testimonial {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image gallery */
+#image-gallery img {
+    max-width: 100%;
+    margin: 10px 0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #80CC28; /* Updated footer color */
+    color: white;
+}
+
+/* Buttons */
+button {
+    background-color: #228B22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #176617;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Range calculator */
+#ev-range-calculator {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#ev-range-calculator h2 {
+    margin-bottom: 20px;
+}
+
+#ev-range-calculator label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#ev-range-calculator select,
+#ev-range-calculator input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#ev-range-calculator button {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin: 10px 5px;
+}
+
+#range-output {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}

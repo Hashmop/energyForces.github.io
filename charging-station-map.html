@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charging Points</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="index.html">Energy Force</a>
+        </div>
+        <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+            &#9776;
+        </button>
+        <div class="navbar-menu" id="navbar-menu">
+            <div class="navbar-link"><a href="index.html">Home</a></div>
+            <div class="navbar-link">
+                <a href="#">EV Charging</a>
+                <div class="dropdown">
+                    <div><a href="find-a-charging-station.html">Find a Charging Station</a></div>
+                    <div><a href="charging-station-map.html">Charging Station Map</a></div>
+                    <div><a href="pricing-and-plans.html">Pricing & Plans</a></div>
+                </div>
+            </div>
+            <div class="navbar-link">
+                <a href="#">Careers</a>
+                <div class="dropdown">
+                    <div><a href="job-listings.html">Job Listings</a></div>
+                    <div><a href="web-developer-profiles.html">Web Developer Profiles</a></div>
+                    <div><a href="job-specifications.html">Job Specifications</a></div>
+                    <div><a href="online-application-form.html">Online Application Form</a></div>
+                </div>
+            </div>
+            <div class="navbar-link">
+                <a href="#">About Us</a>
+                <div class="dropdown">
+                    <div><a href="company-profile.html">Company Profile</a></div>
+                    <div><a href="our-mission.html">Our Mission</a></div>
+                </div>
+            </div>
+            <div class="navbar-link">
+                <a href="#">Services</a>
+                <div class="dropdown">
+                    <div><a href="gas-supply.html">Gas Supply</a></div>
+                    <div><a href="electricity-supply.html">Electricity Supply</a></div>
+                    <div><a href="ev-charging-solutions.html">EV Charging Solutions</a></div>
+                </div>
+            </div>
+            <div class="navbar-link">
+                <a href="#">Resources</a>
+                <div class="dropdown">
+                    <div><a href="web-development-courses.html">Web Development Courses</a></div>
+                    <div><a href="energy-efficiency-tips.html">Energy Efficiency Tips</a></div>
+                </div>
+            </div>
+            <div class="navbar-link"><a href="contact-us.html">Contact Us</a></div>
+        </div>
+    </nav>
+
+    <h1>Charging Points</h1>
+    <div id="map" style="height: 400px;"></div>
+
+    <div class="info-section">
+        <h2>About Our Charging Points</h2>
+        <p>We offer a wide network of reliable and fast charging points across the city. Our charging points are strategically located to ensure that you are never far from a charging station, whether you are at home, at work, or on the road.</p>
+        <h3>Features:</h3>
+        <ul>
+            <li>Fast Charging</li>
+            <li>24/7 Availability</li>
+            <li>Multiple Payment Options</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Electric Power Solutions. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
