@@ -1,4 +1,4 @@
-// components/navbar.js
+// js/navbar.js
 class Navbar {
     constructor() {
         this.navbar = document.createElement('nav');
@@ -7,13 +7,13 @@ class Navbar {
 
     createNavLinks() {
         return [
-            { href: '../html/index.html', text: 'Home' },
-            { href: '../html/ev-charging.html', text: 'EV Charging' },
-            { href: '../html/careers.html', text: 'Careers' },
-            { href: '../html/about-us.html', text: 'About Us' },
-            { href: '../html/services.html', text: 'Services' },
-            { href: '../html/resources.html', text: 'Resources' },
-            { href: '../html/contact-us.html', text: 'Contact Us' }
+            { href: './index.html', text: 'Home' },
+            { href: './ev-charging.html', text: 'EV Charging' },
+            { href: './careers.html', text: 'Careers' },
+            { href: './about-us.html', text: 'About Us' },
+            { href: './services.html', text: 'Services' },
+            { href: './resources.html', text: 'Resources' },
+            { href: './contact-us.html', text: 'Contact Us' }
         ];
     }
 
@@ -22,8 +22,8 @@ class Navbar {
         const brand = document.createElement('div');
         brand.className = 'navbar-brand';
         brand.innerHTML = `
-            <a href="../html/index.html">
-                <img src="../images/logo.png" alt="Energy Force Logo" width="103" height="106" class="navbar-logo">
+            <a href="./index.html">
+                <img src="./images/logo.png" alt="Energy Force Logo" width="103" height="106" class="navbar-logo">
             </a>
         `;
 
