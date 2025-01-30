@@ -1,81 +1,184 @@
-// Initialize the map
-const map = L.map('map').setView([51.505, -0.09], 13);
+let map;
+let currentMarkers = [];
+let userLocation = [51.505, -0.09];
+let activeFilters = new Set(['fast', 'ultra']);
+let searchTimeout;
 
-// Add a tile layer (OpenStreetMap)
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+const chargerIcons = {
+    fast: L.icon({
+        iconUrl: 'images/fast-charger.png',
+        iconSize: [34, 34],
+        iconAnchor: [17, 34]
+    }),
+    ultra: L.icon({
+        iconUrl: 'images/ultra-charger.png',
+        iconSize: [42, 42],
+        iconAnchor: [21, 42]
+    })
+};
 
-// Function to fetch nearby charging stations
-async function fetchNearbyChargingStations(lat, lon, radius = 5000) {
-    const apiKey = 'c6380fba-c77d-4f8d-a289-39425c836fb3'; // Replace with your actual API key
-    const url = `https://api.openchargemap.io/v3/poi/?output=json&latitude=${lat}&longitude=${lon}&distance=${radius}&distanceunit=KM&maxresults=100&compact=true&verbose=false&key=${apiKey}`;
+function initMap() {
+    map = L.map('map', {
+        center: userLocation,
+        zoom: 13,
+        fullscreenControl: true,
+        zoomControl: false
+    });
 
+    L.control.zoom({ position: 'topright' }).addTo(map);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            userLocation = [position.coords.latitude, position.coords.longitude];
+            addUserLocationMarker();
+            loadChargers();
+        }, handleLocationError);
+    } else {
+        loadChargers();
+    }
+
+    document.getElementById('location-search').addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(searchLocation, 500);
+    });
+}
+
+async function loadChargers() {
     try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
+        showLoading(true);
+        const stations = await fetchNearbyChargingStations(userLocation[0], userLocation[1]);
+        window.lastStationData = stations;
+        updateMapMarkers(stations);
+        map.setView(userLocation, 13);
     } catch (error) {
-        console.error('Error fetching charging stations:', error);
-        return [];
+        alert('Failed to load charging stations. Please try again.');
+    } finally {
+        showLoading(false);
     }
 }
 
-// Function to add charging station markers to the map
-function addChargingStationMarkers(stations) {
+async function fetchNearbyChargingStations(lat, lon) {
+    const apiKey = 'c6380fba-c77d-4f8d-a289-39425c836fb3';
+    const response = await fetch(`https://api.openchargemap.io/v3/poi/?latitude=${lat}&longitude=${lon}&distance=50&maxresults=50&key=${apiKey}`);
+    const data = await response.json();
+    return data.map(station => ({
+        ...station,
+        status: Math.random() > 0.1 ? 'available' : 'in-use',
+        type: Math.random() > 0.5 ? 'fast' : 'ultra'
+    }));
+}
+
+function updateMapMarkers(stations) {
+    currentMarkers.forEach(marker => map.removeLayer(marker));
+    currentMarkers = [];
+
     stations.forEach(station => {
-        const marker = L.marker([station.AddressInfo.Latitude, station.AddressInfo.Longitude]).addTo(map);
-        marker.bindPopup(`
-            <b>${station.AddressInfo.Title}</b><br>
-            ${station.AddressInfo.AddressLine1}<br>
-            ${station.AddressInfo.Town}, ${station.AddressInfo.Postcode}<br>
-            <button onclick="showRoute([${userLocation[0]}, ${userLocation[1]}], [${station.AddressInfo.Latitude}, ${station.AddressInfo.Longitude}])">Route to here</button>
-        `);
+        if (!activeFilters.has(station.type)) return;
+
+        const marker = L.marker(
+            [station.AddressInfo.Latitude, station.AddressInfo.Longitude],
+            { icon: chargerIcons[station.type] }
+        ).addTo(map);
+
+        const popupContent = `
+            <div class="charging-popup">
+                <h4>${station.AddressInfo.Title}</h4>
+                <div class="charging-status ${station.status}">
+                    <i class="fas fa-${station.status === 'available' ? 'check-circle' : 'exclamation-triangle'}"></i>
+                    ${station.status.toUpperCase()}
+                </div>
+                <div class="popup-details">
+                    <p><i class="fas fa-charging-station"></i> ${station.type.charAt(0).toUpperCase() + station.type.slice(1)} Charger</p>
+                    <p><i class="fas fa-tachometer-alt"></i> ${station.type === 'ultra' ? '350kW' : '150kW'} Power</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ${(station.AddressInfo.Distance * 1.60934).toFixed(1)} km away</p>
+                    ${station.status !== 'available' ? `
+                    <p><i class="fas fa-clock"></i> Estimated wait: 10-15 mins</p>
+                    ` : ''}
+                </div>
+                <div class="popup-actions">
+                    <button class="animated-button" onclick="showRoute([${userLocation}], [${station.AddressInfo.Latitude}, ${station.AddressInfo.Longitude}])">
+                        <i class="fas fa-route"></i> Directions
+                    </button>
+                    <button class="animated-button" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${station.AddressInfo.Latitude},${station.AddressInfo.Longitude}')">
+                        <i class="fas fa-external-link-alt"></i> Open Maps
+                    </button>
+                </div>
+            </div>
+        `;
+
+        marker.bindPopup(popupContent);
+        currentMarkers.push(marker);
     });
 }
 
-// Function to show route (using OSRM Demo server - replace with your preferred routing service)
-function showRoute(start, end) {
-    const url = `https://router.project-osrm.org/route/v1/driving/${start[1]},${start[0]};${end[1]},${end[0]}?overview=full&geometries=geojson`;
+function addUserLocationMarker() {
+    L.marker(userLocation, {
+        icon: L.divIcon({
+            className: 'user-location-marker',
+            html: '<div class="pulse-dot"></div>',
+            iconSize: [20, 20]
+        })
+    }).addTo(map).bindPopup("Your Location");
+}
 
-    fetch(url)
+function showLoading(show) {
+    document.querySelector('.loading-overlay').style.display = show ? 'flex' : 'none';
+}
+
+function handleLocationError(error) {
+    console.error("Geolocation error:", error);
+    loadChargers();
+}
+
+window.showRoute = function(start, end) {
+    showLoading(true);
+    fetch(`https://router.project-osrm.org/route/v1/driving/${start[1]},${start[0]};${end[1]},${end[0]}?overview=full&geometries=geojson`)
         .then(response => response.json())
         .then(data => {
-            if (window.routeLayer) {
-                map.removeLayer(window.routeLayer);
-            }
+            if (window.routeLayer) map.removeLayer(window.routeLayer);
             window.routeLayer = L.geoJSON(data.routes[0].geometry).addTo(map);
             map.fitBounds(window.routeLayer.getBounds());
         })
-        .catch(error => console.error('Error:', error));
+        .finally(() => showLoading(false));
 }
 
-let userLocation;
-
-// Get user's current location
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async function(position) {
-        userLocation = [position.coords.latitude, position.coords.longitude];
-        
-        // Add a marker for the user's location
-        L.marker(userLocation).addTo(map)
-            .bindPopup("You are here")
-            .openPopup();
-
-        // Fetch and display nearby charging stations
-        const stations = await fetchNearbyChargingStations(userLocation[0], userLocation[1]);
-        addChargingStationMarkers(stations);
-
-        // Center the map on the user's location
-        map.setView(userLocation, 13);
-    }, function(error) {
-        console.error("Error getting user location:", error);
-        alert("Unable to get your location. Please check your browser settings.");
-    });
-} else {
-    console.log("Geolocation is not supported by this browser.");
-    alert("Geolocation is not supported by your browser. Please enter your location manually.");
+window.toggleFilter = function(type) {
+    const btn = document.getElementById(`${type}-filter`);
+    btn.classList.toggle('active');
+    activeFilters.has(type) ? activeFilters.delete(type) : activeFilters.add(type);
+    updateMapMarkers(window.lastStationData);
 }
 
-// Enable scrolling and zooming
-map.scrollWheelZoom.enable();
+function locateUser() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            userLocation = [position.coords.latitude, position.coords.longitude];
+            map.setView(userLocation, 13);
+            loadChargers();
+        }, handleLocationError);
+    }
+}
+
+async function searchLocation() {
+    const query = document.getElementById('location-search').value;
+    if (!query) return;
+
+    try {
+        showLoading(true);
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json`);
+        const results = await response.json();
+        if (results.length > 0) {
+            userLocation = [results[0].lat, results[0].lon];
+            map.setView(userLocation, 13);
+            loadChargers();
+        }
+    } finally {
+        showLoading(false);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initMap);

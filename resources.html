@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
     <main>
         <section class="hero">
             <div class="hero-background">
@@ -15,45 +14,75 @@
                 <img src="images/ev-car.jpg" alt="Electric Vehicle Being Charged">
                 <img src="images/ev-home.jpg" alt="EV Charger Close-up">
             </div>
-            <h1>EV Charging Resources</h1>
-            <p>Find helpful information about EV charging and our services.</p>
+            <h1>EV Resources Center</h1>
+            <p>Your comprehensive guide to electric mobility</p>
         </section>
 
-        <section class="info-section">
-            <h2>EV Charging Guide</h2>
-            <ul>
-                <li>Types of EV chargers</li>
-                <li>How to use our charging stations</li>
-                <li>Charging etiquette</li>
-                <li>Troubleshooting common issues</li>
-            </ul>
-        </section>
+        <div class="resources-grid">
+            <!-- Charging Guide Card -->
+            <div class="resource-card">
+                <div class="resource-icon">📘</div>
+                <h3>Charging Guide</h3>
+                <div class="resource-content">
+                    <ul>
+                        <li>Charger types explained</li>
+                        <li>Optimal charging practices</li>
+                        <li>Network access tutorial</li>
+                    </ul>
+                    <button class="animated-button">Download PDF</button>
+                </div>
+            </div>
 
-        <section class="info-section">
-            <h2>FAQs</h2>
-            <ul>
-                <li>How do I find the nearest charging station?</li>
-                <li>What payment methods do you accept?</li>
-                <li>How long does it take to charge an EV?</li>
-                <li>Are your charging stations always available?</li>
-            </ul>
-        </section>
+            <!-- Interactive FAQ Card -->
+            <div class="resource-card">
+                <div class="resource-icon">❓</div>
+                <h3>FAQs</h3>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question">Finding stations?</div>
+                        <div class="faq-answer">Use our mobile app with live map</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Payment options?</div>
+                        <div class="faq-answer">Credit cards, mobile pay, RFID cards</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Charging time?</div>
+                        <div class="faq-answer">30-45 mins for 80% fast charge</div>
+                    </div>
+                </div>
+            </div>
 
-        <section class="info-section">
-            <h2>EV News and Updates</h2>
-            <ul>
-                <li>Latest developments in EV technology</li>
-                <li>Updates on our charging network</li>
-                <li>Government incentives for EV owners</li>
-            </ul>
+            <!-- News Section -->
+            <div class="resource-card">
+                <div class="resource-icon">📰</div>
+                <h3>Latest Updates</h3>
+                <div class="news-feed">
+                    <article class="news-item">
+                        <h4>New Ultra-Fast Stations</h4>
+                        <p>20 new 350kW stations added in Midwest</p>
+                    </article>
+                    <article class="news-item">
+                        <h4>Solar Charging Initiative</h4>
+                        <p>50% of stations now solar-powered</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <section class="info-section video-section">
+            <h2>How It Works</h2>
+            <div class="video-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/example" 
+                frameborder="0" allowfullscreen></iframe>
+            </div>
         </section>
     </main>
-
-    <footer>
+        <footer>
         <p>&copy; 2024 Energy Force. All rights reserved.</p>
     </footer>
 
-    <script src="js/navbar.js"></script>
     <script src="js/slideshow.js"></script>
+    <script src="js/navbar.js"></script>
 </body>
 </html>

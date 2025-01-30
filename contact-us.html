@@ -5,50 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Energy Force</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        #contact-form {
+            display: grid;
+            gap: 1.5rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #contact-form label {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: -10px;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        #contact-form input:focus,
+        #contact-form textarea:focus {
+            border-color: #80CC28;
+            outline: none;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-card h2 {
+            color: #80CC28;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #80CC28;
+        }
+    </style>
 </head>
 <body>
-
     <main>
         <section class="hero">
-            <h1>Contact Us</h1>
-            <p>We're here to help with all your EV charging needs.</p>
+            <div class="hero-background">
+                <img src="images/ev-charger.jpeg" alt="EV Charging Station">
+                <img src="images/ev-car.jpg" alt="Electric Vehicle Being Charged">
+                <img src="images/ev-home.jpg" alt="EV Charger Close-up">
+            </div>
+            <h1>Contact Energy Force</h1>
+                <p>We're here to help with all your EV charging needs</p>
         </section>
 
-        <section class="info-section">
-            <h2>Get in Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h2>Customer Support</h2>
+                <p>24/7 Availability</p>
+                <p class="highlight-text">0800 123 4567</p>
+                <p>support@energyforce.com</p>
+            </div>
+
             <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Send Message</button>
+                <h2 style="text-align: center; color: #80CC28;">Send Us a Message</h2>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+                
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
+                
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="How can we help?">
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
+                
+                <button type="submit" class="animated-button">
+                    Send Message ➔
+                </button>
             </form>
-        </section>
 
-        <section class="info-section">
-            <h2>Customer Support</h2>
-            <p>Phone: 0800 123 4567</p>
-            <p>Email: support@energyforce.com</p>
-            <p>Hours: 24/7</p>
-        </section>
-
-        <section class="info-section">
-            <h2>Head Office</h2>
-            <p>Energy Force Ltd.</p>
-            <p>123 Green Street</p>
-            <p>London, SW1A 1AA</p>
-            <p>United Kingdom</p>
-        </section>
+            <div class="contact-card">
+                <div class="contact-icon">🏢</div>
+                <h2>Head Office</h2>
+                <p>Energy Force Ltd.</p>
+                <p>123 Green Street</p>
+                <p>London, SW1A 1AA</p>
+                <p>United Kingdom</p>
+            </div>
+        </div>
     </main>
-
 
     <script src="js/slideshow.js"></script>
     <script src="js/navbar.js"></script>

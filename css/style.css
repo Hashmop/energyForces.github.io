@@ -342,3 +342,371 @@ th {
         max-width: 100%;
     }
 }
+/* Why Choose Us Section */
+.why-choose-us {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.section-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.2);
+}
+
+.feature-card h3 {
+    color: #80CC28;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+/* Additional Global Styles */
+.highlight-text {
+    font-weight: bold;
+    color: #80CC28;
+    font-size: 1.2em;
+}
+
+.animated-button {
+    background: #80CC28;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.animated-button:hover {
+    background: #66a320;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.form-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-bottom: 2rem;
+}
+/* Services Page Enhancements */
+.service-features {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.service-features li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+.service-features li::before {
+    content: "✓";
+    color: #80CC28;
+    margin-right: 10px;
+}
+
+.stats-section {
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    color: #80CC28;
+    font-weight: bold;
+}
+
+.stat-label {
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Resources Page Enhancements */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.resource-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.resource-icon {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.faq-accordion {
+    margin-top: 1rem;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+}
+
+.faq-question {
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    padding-top: 0.5rem;
+    color: #666;
+}
+
+.news-item {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-top: 2rem;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resource-card {
+        margin: 1rem;
+    }
+}
+.user-location-marker .pulse-dot {
+    width: 20px;
+    height: 20px;
+    background: #80CC28;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+.charging-popup {
+    font-family: 'Roboto', sans-serif;
+}
+
+.charging-popup h4 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.charging-popup p {
+    margin: 8px 0;
+}
+/* In ev-charging.html's style section */
+.page-header {
+    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, #66a320 0%, #80CC28 100%);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    display: flex;
+    background: white;
+    border-radius: 30px;
+    padding: 5px 15px;
+}
+
+#location-search {
+    border: none;
+    padding: 8px;
+    min-width: 250px;
+}
+
+.search-btn {
+    background: none;
+    color: #666;
+    padding: 0;
+}
+
+.map-legend {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.legend-item img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Adjust map height */
+#map {
+    height: calc(100vh - 240px);
+}
+
+@media (max-width: 768px) {
+    #map {
+        height: calc(100vh - 200px);
+    }
+    
+    .map-legend {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        font-size: 0.9em;
+    }
+    
+    .header-actions {
+        flex-direction: column;
+    }
+    
+    #location-search {
+        min-width: auto;
+    }
+}
+/* Add to style.css */
+.animated-button.compact {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border-radius: 18px;
+}
+
+.charging-popup .fa-charging-station {
+    color: #80CC28;
+}
+
+.popup-details {
+    margin: 15px 0;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 12px !important;
+}
