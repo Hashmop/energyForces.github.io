@@ -1,40 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Energy Force</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us - Energy Force</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Enhanced About Us Page Styles */
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 100px 20px;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background: url('images/plant.png') center/cover no-repeat;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      background-color: rgba(128, 204, 40, 0.8);
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      background-color: rgba(128, 204, 40, 0.8);
+      padding: 8px 16px;
+      border-radius: 5px;
+    }
+    
+    /* Info Sections */
+    .info-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .info-section h2 {
+      text-align: center;
+      color: #80CC28;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    .info-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      text-align: justify;
+    }
+    
+    /* Team Section as Cards */
+    .info-section ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .info-section ul li {
+      background: #f8f9fa;
+      margin: 0.5rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      flex: 1 1 250px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .info-section ul li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-background">
-            <img src="images/plant.png" alt="Our Team" class="active">
-        </div>
-        <div class="hero-content">
-            <h1>About Us</h1>
-            <p>Learn about our mission and team at Energy Force.</p>
-        </div>
-    </header>
-
-    <!-- Info Section -->
-    <div class="info-section">
-        <h2>Our Company</h2>
-        <p>Energy Force is dedicated to providing sustainable energy solutions. We are a leading provider of gas, electricity, and now public electric vehicle charging points. Our mission is to innovate and lead the way in clean energy.</p>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>About Us</h1>
+      <p>Learn about our mission and team at Energy Force.</p>
     </div>
+  </header>
 
-    <div class="info-section">
-        <h2>Our Team</h2>
-        <p>Meet our dedicated team of professionals who are committed to delivering exceptional service and innovation in the energy sector.</p>
-        <ul>
-            <li><strong>John Doe</strong> - CEO</li>
-            <li><strong>Jane Smith</strong> - CTO</li>
-            <li><strong>Emily Johnson</strong> - CFO</li>
-        </ul>
-    </div>
+  <!-- Company Information -->
+  <div class="info-section">
+    <h2>Our Company</h2>
+    <p>
+      Energy Force is dedicated to providing sustainable energy solutions. We are a leading provider of gas, electricity, and now public electric vehicle charging points. Our mission is to innovate and lead the way in clean energy.
+    </p>
+  </div>
 
-    <script src="js/navbar.js"></script>
-    <script src="js/slideshow.js"></script>
+  <!-- Team Section -->
+  <div class="info-section">
+    <h2>Our Team</h2>
+    <p>
+      Meet our dedicated team of professionals who are committed to delivering exceptional service and innovation in the energy sector.
+    </p>
+    <ul>
+      <li>
+        <strong>John Doe</strong><br>
+        CEO
+      </li>
+      <li>
+        <strong>Jane Smith</strong><br>
+        CTO
+      </li>
+      <li>
+        <strong>Emily Johnson</strong><br>
+        CFO
+      </li>
+    </ul>
+  </div>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/slideshow.js"></script>
 </body>
 </html>

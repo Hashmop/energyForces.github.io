@@ -1,146 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers at Energy Force</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Careers Page Specific Styles */
-        .careers-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers at Energy Force</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Careers Page Specific Styles */
+    .careers-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
 
-        .position-card {
-            background: white;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
+    .position-card {
+      background: white;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .position-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
 
-        .position-card:hover {
-            transform: translateY(-5px);
-        }
+    .position-details h3 {
+      border-bottom: 2px solid #80CC28;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 1rem;
+    }
 
-        .application-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
+    .position-details ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .position-details ul li {
+      margin-bottom: 0.5rem;
+      padding-left: 25px;
+      position: relative;
+    }
+    .position-details ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #80CC28;
+      font-weight: bold;
+    }
 
-        .course-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+    .application-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin: 2rem 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .application-form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
 
-        .course-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
+    .course-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
 
-        .course-card:hover {
-            background: #80CC28;
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .course-card a {
-            color: inherit;
-            text-decoration: none;
-        }
-    </style>
+    .course-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .course-card:hover {
+      background: #80CC28;
+      color: white;
+      transform: translateY(-3px);
+    }
+    .course-card a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <main>
-        <section class="hero">
-            <div class="hero-background">
-                <img src="images/ev-charger.jpeg" alt="EV Charging Station">
-                <img src="images/ev-car.jpg" alt="Electric Vehicle Being Charged">
-                <img src="images/ev-home.jpg" alt="EV Charger Close-up">
-            </div>
-            <h1>Power Your Career</h1>
-                <p>Join the renewable energy revolution</p>
-        </section>
+  <main>
+    <section class="hero">
+      <div class="hero-background">
+        <img src="images/ev-charger.jpeg" alt="EV Charging Station">
+        <img src="images/ev-car.jpg" alt="Electric Vehicle Being Charged">
+        <img src="images/ev-home.jpg" alt="EV Charger Close-up">
+      </div>
+      <h1>Power Your Career</h1>
+      <p>Join the renewable energy revolution</p>
+    </section>
 
-        <div class="careers-container">
-            <div class="position-card">
-                <h2 style="color: #80CC28;">Web Developer</h2>
-                <div class="position-details">
-                    <h3>Key Responsibilities</h3>
-                    <ul>
-                        <li>Develop and maintain company web applications</li>
-                        <li>Implement responsive UI/UX designs</li>
-                        <li>Optimize web performance and accessibility</li>
-                    </ul>
-                    
-                    <h3>Requirements</h3>
-                    <ul>
-                        <li>Bachelor's degree in Computer Science or related field</li>
-                        <li>2+ years experience with modern web frameworks</li>
-                        <li>Proficient in HTML5, CSS3, and JavaScript</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="application-form">
-                <h2 style="text-align: center; color: #80CC28;">Apply Now</h2>
-                <form id="career-form">
-                    <div class="form-grid">
-                        <div>
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div>
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div>
-                            <label for="resume">Upload Resume</label>
-                            <input type="file" id="resume" name="resume" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="animated-button">
-                        Submit Application ➔
-                    </button>
-                </form>
-            </div>
-
-            <h2 style="text-align: center; margin: 2rem 0;">Recommended Learning Resources</h2>
-            <div class="course-links">
-                <div class="course-card">
-                    <a href="https://www.w3schools.com" target="_blank">
-                        <h3>W3Schools</h3>
-                        <p>Beginner-friendly web tutorials</p>
-                    </a>
-                </div>
-                <div class="course-card">
-                    <a href="https://www.coursera.org" target="_blank">
-                        <h3>Coursera</h3>
-                        <p>University-level courses</p>
-                    </a>
-                </div>
-                <div class="course-card">
-                    <a href="https://www.udemy.com" target="_blank">
-                        <h3>Udemy</h3>
-                        <p>Practical project-based learning</p>
-                    </a>
-                </div>
-            </div>
+    <div class="careers-container">
+      <div class="position-card">
+        <h2 style="color: #80CC28;">Web Developer</h2>
+        <div class="position-details">
+          <h3>Key Responsibilities</h3>
+          <ul>
+            <li>Develop and maintain company web applications</li>
+            <li>Implement responsive UI/UX designs</li>
+            <li>Optimize web performance and accessibility</li>
+          </ul>
+          <h3>Requirements</h3>
+          <ul>
+            <li>Bachelor's degree in Computer Science or related field</li>
+            <li>2+ years experience with modern web frameworks</li>
+            <li>Proficient in HTML5, CSS3, and JavaScript</li>
+          </ul>
         </div>
-    </main>
+      </div>
 
-    <script src="js/slideshow.js"></script>
-    <script src="js/navbar.js"></script>
+      <div class="application-form">
+        <h2 style="text-align: center; color: #80CC28;">Apply Now</h2>
+        <form id="career-form">
+          <div class="form-grid">
+            <div>
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+              <label for="resume">Upload Resume</label>
+              <input type="file" id="resume" name="resume" required>
+            </div>
+          </div>
+          <button type="submit" class="animated-button">
+            Submit Application ➔
+          </button>
+        </form>
+      </div>
+	
+      <h2 style="text-align: center; color: #80CC28;">Recommended Learning Resources</h2>
+      <div class="course-links">
+        <div class="course-card">
+          <a href="https://www.w3schools.com" target="_blank">
+            <h3>W3Schools</h3>
+            <p>Beginner-friendly web tutorials</p>
+          </a>
+        </div>
+        <div class="course-card">
+          <a href="https://www.coursera.org" target="_blank">
+            <h3>Coursera</h3>
+            <p>University-level courses</p>
+          </a>
+        </div>
+        <div class="course-card">
+          <a href="https://www.udemy.com" target="_blank">
+            <h3>Udemy</h3>
+            <p>Practical project-based learning</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/slideshow.js"></script>
+  <script src="js/navbar.js"></script>
 </body>
 </html>

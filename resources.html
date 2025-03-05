@@ -1,88 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources - Energy Force</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources - Energy Force</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Additional styles for Resources Page */
+    .resource-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
 </head>
 <body>
-    <main>
-        <section class="hero">
-            <div class="hero-background">
-                <img src="images/ev-charger.jpeg" alt="EV Charging Station">
-                <img src="images/ev-car.jpg" alt="Electric Vehicle Being Charged">
-                <img src="images/ev-home.jpg" alt="EV Charger Close-up">
-            </div>
-            <h1>EV Resources Center</h1>
-            <p>Your comprehensive guide to electric mobility</p>
-        </section>
+  <main>
+    <section class="hero">
+      <div class="hero-background">
+        <img src="images/ev-charger.jpeg" alt="EV Charging Station">
+        <img src="images/ev-car.jpg" alt="Electric Vehicle Being Charged">
+        <img src="images/ev-home.jpg" alt="EV Charger Close-up">
+      </div>
+      <h1>EV Resources Center</h1>
+      <p>Your comprehensive guide to electric mobility</p>
+    </section>
 
-        <div class="resources-grid">
-            <!-- Charging Guide Card -->
-            <div class="resource-card">
-                <div class="resource-icon">📘</div>
-                <h3>Charging Guide</h3>
-                <div class="resource-content">
-                    <ul>
-                        <li>Charger types explained</li>
-                        <li>Optimal charging practices</li>
-                        <li>Network access tutorial</li>
-                    </ul>
-                    <button class="animated-button">Download PDF</button>
-                </div>
-            </div>
-
-            <!-- Interactive FAQ Card -->
-            <div class="resource-card">
-                <div class="resource-icon">❓</div>
-                <h3>FAQs</h3>
-                <div class="faq-accordion">
-                    <div class="faq-item">
-                        <div class="faq-question">Finding stations?</div>
-                        <div class="faq-answer">Use our mobile app with live map</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Payment options?</div>
-                        <div class="faq-answer">Credit cards, mobile pay, RFID cards</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Charging time?</div>
-                        <div class="faq-answer">30-45 mins for 80% fast charge</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- News Section -->
-            <div class="resource-card">
-                <div class="resource-icon">📰</div>
-                <h3>Latest Updates</h3>
-                <div class="news-feed">
-                    <article class="news-item">
-                        <h4>New Ultra-Fast Stations</h4>
-                        <p>20 new 350kW stations added in Midwest</p>
-                    </article>
-                    <article class="news-item">
-                        <h4>Solar Charging Initiative</h4>
-                        <p>50% of stations now solar-powered</p>
-                    </article>
-                </div>
-            </div>
+    <div class="resources-grid">
+      <!-- Charging Guide Card -->
+      <div class="resource-card">
+        <div class="resource-icon">📘</div>
+        <h3>Charging Guide</h3>
+        <div class="resource-content">
+          <ul>
+            <li>Charger types explained</li>
+            <li>Optimal charging practices</li>
+            <li>Network access tutorial</li>
+          </ul>
+          <button class="animated-button">Download PDF</button>
         </div>
+      </div>
 
-        <section class="info-section video-section">
-            <h2>How It Works</h2>
-            <div class="video-wrapper">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/example" 
-                frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-    </main>
-        <footer>
-        <p>&copy; 2024 Energy Force. All rights reserved.</p>
-    </footer>
+      <!-- Interactive FAQ Card -->
+      <div class="resource-card">
+        <div class="resource-icon">❓</div>
+        <h3>FAQs</h3>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <div class="faq-question">Finding stations?</div>
+            <div class="faq-answer">Use our mobile app with live map</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Payment options?</div>
+            <div class="faq-answer">Credit cards, mobile pay, RFID cards</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Charging time?</div>
+            <div class="faq-answer">30-45 mins for 80% fast charge</div>
+          </div>
+        </div>
+      </div>
 
-    <script src="js/slideshow.js"></script>
-    <script src="js/navbar.js"></script>
+      <!-- News Section -->
+      <div class="resource-card">
+        <div class="resource-icon">📰</div>
+        <h3>Latest Updates</h3>
+        <div class="news-feed">
+          <article class="news-item">
+            <h4>New Ultra-Fast Stations</h4>
+            <p>20 new 350kW stations added in Midwest</p>
+          </article>
+          <article class="news-item">
+            <h4>Solar Charging Initiative</h4>
+            <p>50% of stations now solar-powered</p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <section class="info-section video-section">
+      <h2>How It Works</h2>
+      <div class="video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XDrcdABiDU4" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Energy Force. All rights reserved.</p>
+  </footer>
+
+  <script src="js/slideshow.js"></script>
+  <script src="js/navbar.js"></script>
+  <script>
+    // FAQ Accordion Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+          const answer = this.nextElementSibling;
+          answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
