@@ -61,7 +61,3 @@ Energy Forces is a utility company that provides gas and electricity to consumer
 
 ## License
 This project is open-source and available under the [MIT License](LICENSE).
-
----
-For any issues or inquiries, please visit the [GitHub Issues](https://github.com/Hashmop/energyForces.github.io/issues) section.
-
