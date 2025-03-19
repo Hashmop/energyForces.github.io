@@ -136,10 +136,10 @@
               <input type="file" id="resume" name="resume" required>
             </div>
           </div>
-          <button type="submit" class="animated-button">
-            Submit Application ➔
-          </button>
+          <button type="submit" class="animated-button">Submit Application ➔</button>
         </form>
+        <!-- Hidden success message; will be displayed after submission -->
+        <p id="form-message" style="color: green; text-align: center; display: none;">Application Submitted Successfully!</p>
       </div>
 	
       <h2 style="text-align: center; color: #80CC28;">Recommended Learning Resources</h2>
@@ -168,5 +168,16 @@
 
   <script src="js/slideshow.js"></script>
   <script src="js/navbar.js"></script>
+  <!-- Added script to handle the form submission -->
+  <script>
+    document.getElementById("career-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.getElementById("form-message").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("form-message").style.display = "none";
+        document.getElementById("career-form").reset();
+      }, 3000);
+    });
+  </script>
 </body>
 </html>

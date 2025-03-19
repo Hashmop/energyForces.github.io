@@ -710,3 +710,71 @@ th {
 .leaflet-popup-content-wrapper {
     border-radius: 12px !important;
 }
+.social-media {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    font-size: 2rem;
+    color: #80CC28;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    color: #66a320;
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.team-member {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-member h3 {
+    color: #80CC28;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.team-title {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #666;
+}
