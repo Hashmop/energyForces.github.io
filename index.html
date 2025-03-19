@@ -5,138 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Energy Force - Sustainable EV Charging Solutions</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Responsive Navbar */
-        body, html {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        .hero {
-            position: relative;
-            text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-        .hero-background img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .feature-card {
-            background: #f4f4f4;
-            padding: 15px;
-            text-align: center;
-            border-radius: 10px;
-        }
-        
-        /* Responsive Navigation */
-        nav {
-            background: #333;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: white;
-        }
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                width: 100%;
-                background: #333;
-            }
-            .nav-links.show {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero-content {
-                width: 90%;
-                font-size: smaller;
-            }
-        }
-    </style>
 </head>
-<body>
-    <nav>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        <div class="nav-links" id="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
-    
+<body>  
+    <!-- Main Content -->
     <header class="hero">
-        <div class="hero-background">
+        <div class="hero-background" id="hero-background">
             <img src="images/ev-car.jpg" alt="Charging Station 1">
+            <img src="images/ev-charger.jpeg" alt="EV Charging">
+            <img src="images/ev-home.jpg" alt="Customer using charging point">
         </div>
         <div class="hero-content">
             <h1>Welcome to Energy Forces</h1>
             <p>Your trusted partner for sustainable energy solutions and EV charging infrastructure.</p>
         </div>
     </header>
-
+    
     <section class="why-choose-us">
+        <div class="section-header">
+            <h2>Why Choose Energy Forces?</h2>
+            <p>Discover what makes us the preferred choice for EV charging solutions</p>
+        </div>
+
         <div class="features-grid">
             <div class="feature-card">
+                <div class="feature-icon">⚡</div>
                 <h3>Ultra-Fast Charging</h3>
-                <p>Up to 350kW charging speeds.</p>
+                <p>Our stations deliver up to 350kW charging speeds, getting you back on the road in minutes</p>
             </div>
+
             <div class="feature-card">
+                <div class="feature-icon">🌍</div>
                 <h3>Eco-Friendly Energy</h3>
-                <p>100% renewable energy sources.</p>
+                <p>100% renewable energy sources powering our nationwide network</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Smart App Control</h3>
+                <p>Real-time monitoring and payment through our award-winning mobile app</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Premium Security</h3>
+                <p>24/7 surveillance and emergency support at all locations</p>
             </div>
         </div>
     </section>
-    
-    <script>
-        function toggleMenu() {
-            document.getElementById("nav-links").classList.toggle("show");
-        }
-    </script>
+
+    <div id="energy-efficiency-tips" class="info-section">
+        <h2>Energy Efficiency Tips</h2>
+        <ul>
+            <li>Avoid rapid acceleration and braking to conserve energy.</li>
+            <li>Regularly maintain your EV's battery for optimal performance.</li>
+            <li>Charge your EV during off-peak hours to save on energy costs.</li>
+        </ul>
+    </div>
+
+    <div id="customer-testimonials" class="info-section">
+        <h2>Customer Testimonials</h2>
+        <div class="testimonial">
+            <p>"I love the convenience of the charging stations provided by Electric Power Solutions. Definitely recommend!"</p>
+            <h4>- John D.</h4>
+        </div>
+        <div class="testimonial">
+            <p>"The EV range calculator has been a game-changer for planning my trips. Great feature!"</p>
+            <h4>- Sarah L.</h4>
+        </div>
+        <div class="testimonial">
+            <p>"Excellent customer service and reliable charging points. Keep up the good work!"</p>
+            <h4>- Emily R.</h4>
+        </div>
+    </div>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/slideshow.js"></script>
 </body>
 </html>
