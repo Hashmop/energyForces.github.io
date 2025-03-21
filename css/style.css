@@ -176,20 +176,6 @@ body {
     color: #80CC28;
 }
 
-/* Testimonials */
-.testimonial {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.testimonial:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
 
 /* Image gallery */
 #image-gallery {
@@ -345,7 +331,6 @@ th {
 /* Why Choose Us Section */
 .why-choose-us {
     padding: 4rem 2rem;
-    background: #f8f9fa;
 }
 
 .section-header {
@@ -355,7 +340,7 @@ th {
 
 .section-header h2 {
     font-size: 2.5rem;
-    color: #333;
+    color: #80CC28;
     margin-bottom: 1rem;
 }
 
@@ -778,3 +763,45 @@ th {
     font-size: 1rem;
     color: #666;
 }
+
+
+/* New Testimonial Image Styles */
+.testimonial {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+/* Scroll Animation */
+/* Initial hidden state */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Visible state when element is in view */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+

@@ -46,16 +46,20 @@
             color: #7f8c8d;
             margin: 0.3rem 0 0;
         }
+        
+        .map-container {
+            position: relative;
+            width: 100%;
+        }
 
         .map-tools {
-            position: absolute;
-            top: 90px;
-            right: 20px;
-            left: 20px;
-            z-index: 1000;
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto 10px;
             display: flex;
             gap: 15px;
             align-items: center;
+            z-index: 999;
         }
 
         .search-box {
@@ -65,6 +69,8 @@
             border-radius: 30px;
             padding: 0 20px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
         }
 
         #location-search {
@@ -73,6 +79,15 @@
             width: 100%;
             font-size: 1rem;
             color: #34495e;
+            outline: none;
+        }
+
+        .search-btn {
+            background: transparent;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            color: #7f8c8d;
         }
 
         .map-controls {
@@ -107,9 +122,10 @@
         #map {
             height: calc(100vh - 160px);
             width: 95%;
-            margin: 20px auto;
+            margin: 0 auto 20px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1;
         }
 
         .leaflet-popup-content {
@@ -132,6 +148,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            color: white;
         }
 
         .available { background: #80CC28; }
@@ -168,6 +185,115 @@
             gap: 8px;
         }
 
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .user-location-marker .pulse-dot {
+            height: 20px;
+            width: 20px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .user-location-marker .pulse-dot:after {
+            content: "";
+            height: 40px;
+            width: 40px;
+            background-color: #3498db;
+            border-radius: 50%;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            animation: pulse 1.5s infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.5); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        /* New location button style */
+        .location-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border: none;
+            cursor: pointer;
+            color: #3498db;
+            font-size: 1.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .location-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        }
+
+        .location-btn:active {
+            transform: scale(0.95);
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+            pointer-events: none;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -176,22 +302,38 @@
             }
 
             .map-tools {
-                top: 140px;
                 flex-direction: column;
+                padding: 0 15px;
+                gap: 10px;
             }
 
             .search-box {
                 max-width: 100%;
+                width: 100%;
             }
 
             #map {
-                height: calc(100vh - 200px);
-                width: 100%;
-                margin: 10px 0;
+                height: calc(100vh - 230px);
+                width: 95%;
+                margin: 10px auto;
+                border-radius: 10px;
             }
 
             .filter-btn {
                 padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .page-header {
+                padding: 1rem;
+            }
+            
+            /* Mobile-specific location button adjustments */
+            .location-btn-container {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 1001;
             }
         }
     </style>
@@ -203,28 +345,35 @@
                 <h1>EV Charging Network</h1>
                 <p>Find real-time charging station availability</p>
             </div>
-            <button class="animated-button" onclick="locateUser()">
-                <i class="fas fa-location-arrow"></i> My Location
-            </button>
+            <div class="location-btn-container tooltip">
+                <button class="location-btn" onclick="locateUser()" aria-label="Find my location">
+                    <i class="fas fa-location-crosshairs"></i>
+                </button>
+                <span class="tooltiptext">My Location</span>
+            </div>
         </div>
     </header>
 
-    <div class="map-tools">
-        <div class="search-box">
-            <input type="text" placeholder="Search location..." id="location-search">
-            <button class="search-btn" onclick="searchLocation()" hidden></button>
+    <div class="map-container">
+        <div class="map-tools">
+            <div class="search-box">
+                <input type="text" placeholder="Search location..." id="location-search">
+                <button class="search-btn" onclick="searchLocation()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="map-controls">
+                <button class="filter-btn active" id="fast-filter" onclick="toggleFilter('fast')">
+                    <i class="fas fa-bolt"></i> Fast
+                </button>
+                <button class="filter-btn active" id="ultra-filter" onclick="toggleFilter('ultra')">
+                    <i class="fas fa-rocket"></i> Ultra
+                </button>
+            </div>
         </div>
-        <div class="map-controls">
-            <button class="filter-btn active" id="fast-filter" onclick="toggleFilter('fast')">
-                <i class="fas fa-bolt"></i> Fast
-            </button>
-            <button class="filter-btn active" id="ultra-filter" onclick="toggleFilter('ultra')">
-                <i class="fas fa-rocket"></i> Ultra
-            </button>
-        </div>
-    </div>
 
-    <div id="map"></div>
+        <div id="map"></div>
+    </div>
 
     <div class="loading-overlay">
         <div class="spinner"></div>
